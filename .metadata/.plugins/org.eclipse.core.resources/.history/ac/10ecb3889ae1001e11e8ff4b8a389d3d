@@ -1,0 +1,16 @@
+package com.kh.jsp.board.model.service;
+
+import java.sql.Connection;
+
+import com.kh.jsp.board.model.dao.BoardDao;
+
+import com.kh.jsp.common.JDBCTemplate.*;
+public class BoardService {
+
+	public void selectListCount() {
+		Connection conn = getConnection();
+		
+		new BoardDao().selectListCount(conn);
+	}
+	
+}

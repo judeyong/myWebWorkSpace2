@@ -1,0 +1,55 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>웰컴파일입니다.</h1>
+	
+	<h1>* EL (Expression Language) 표현언어</h1>
+	
+	<p>
+		기존에 사용했던 출력시(표현식) &lt;= 변수 %&gt; <br>
+		JSP상에 표현하고자 하는 값을 \${ 변수 }의 형식으로 표현해서 작성하는 것
+	</p>
+	
+	<h3>1. EL구문 기본 학습</h3>
+	<a href="/action/el.do">01_EL</a>
+	<br><br>
+	
+	<h3>2. EL 구문에 사용할 수 있는 연산자 학습!</h3>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>

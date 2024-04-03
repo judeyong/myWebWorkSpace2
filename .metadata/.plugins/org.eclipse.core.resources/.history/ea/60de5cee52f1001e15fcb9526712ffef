@@ -1,0 +1,77 @@
+package com.kh.controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class ELServlet
+ */
+@WebServlet("/el.do")
+public class ELServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ELServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// 서블릿에서 응답데이터가 존재 한다면
+		// request, session
+		// application, --page 에 담을 수 있었음 --> Servlet내장객체 / scope 객체
+		
+		/*
+		 * 1. ServletContext (application scope)
+		 *  한 어플리케이션 당, 단 한 개 존재하는 객체
+		 *  이 영역에 데이터를 담으면 어플리케이션 전역에서 사용 가능
+		 *  => 공유범위가 가장 큼
+		 * 
+		 * 2. HttpSession (session scope) 
+		 *  하나의 브라우저 당, 한 개 존재하는 객체
+		 *  이 영역에 데이터를 담으면 JSP/Servlet 단에서 사용 가능
+		 *  값이 한 번 담기면 서버를 중지하거나, 세션을 비우거나, 브라우저가 닫히기 전까지는 사용 가능(로그인 기능)
+		 *  => application에 비해서 공유 범위가 다소 제한적
+		 *  
+		 * 3. HttpServletRequest (request scope) 
+		 *  요청 및 응답 시 매 번 생성되는 객체
+		 *  이 영역에 데이터를 담으면 해당 request객체를 포워딩 받는 응답 jsp에서만 사용 가능 (1회성)
+		 *  => 공유 범위가 해당 요청에 대한 응답 jsp단 하나 뿐
+		 *  
+		 * 4. PageContext (page scope)
+		 *  현재 jsp에서만 사용 가능
+		 *  => 공유범위가 가장 작음(해당 페이지에서만 사용가능)
+		 *  
+		 *=> 위 객체들에 값을 담을때는 .setAttribute("키", 밸류);
+		 *           값을 뽑을떄는 .getAttribute("키");
+		 *           값을 지울때는 .removeAttribute("키");
+		 * 
+		 */
+		
+		// requestScope
+		request.setAttribute("classRoom", "C강의장");
+		request.setAttribute("student", "홍길동");
+		
+		// sessionScope
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

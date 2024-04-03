@@ -1,0 +1,10 @@
+package com.kh.jsp.member.model.service;
+
+public class MemberService {
+	
+	public void login(String userId, String userPwd) {
+	
+		
+	}
+	
+}

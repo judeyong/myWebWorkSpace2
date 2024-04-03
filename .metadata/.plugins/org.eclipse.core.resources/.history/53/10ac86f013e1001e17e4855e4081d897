@@ -1,0 +1,10 @@
+package com.kh.jsp.board.model.dao;
+
+import java.util.Properties;
+
+public class BoardDao {
+	
+	private Properties prop = new Properties();
+	
+	
+}

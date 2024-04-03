@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<comment>
+		Subway Mapper
+	</comment>
+	
+	<entry key="insert">
+		INSERT
+		  INTO
+			  TB_ORDER
+		VALUES(
+			  ?,
+			  ?,
+			  ?,
+			  ?,
+			  ?,
+			  ?,
+			  ?,
+			  ?,
+			  ?,
+			  ?,
+			  SYSDATE
+			  )				
+	</entry>
+	
+	<entry key="findAll">
+		SELECT
+			  USER_NAME,
+			  PHONE,
+			  ADDRESS,
+			  MESSAGE,
+			  SANDWICH,
+			  VEGETABLE,
+			  SAUCE,
+			  COOKIE,
+			  PAYMENT,
+			  PRICE,
+			  ORDER_DATE
+		  FROM
+		  	  TB_ORDER
+		 ORDER
+		 	BY
+		 	  ORDER_DATE DESC
+	</entry>
+	
+	
+	
+	
+</properties>

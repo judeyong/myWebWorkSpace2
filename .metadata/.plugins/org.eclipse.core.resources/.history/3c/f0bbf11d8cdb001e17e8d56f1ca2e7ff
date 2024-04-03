@@ -1,0 +1,146 @@
+package com.kh.jsp.member.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.kh.jsp.member.model.service.MemberService;
+import com.kh.jsp.member.model.vo.Member;
+
+/**
+ * Servlet implementation class LoginController
+ */
+@WebServlet("/login")
+public class LoginController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public LoginController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		/*
+		 * <HttpServletRequest, HttpServletResponse> 
+		 * 
+		 *  - request : 서버로 요청할 때 (요청 시 전달 값, 요청 전송방식, 요청한 사용자 정보 등등)
+		 *  - response : 요청에 대해 응답하고자 할 때 사용하는 객체 
+		 */
+		
+		// 1) POST방식일 경우 인코딩 작업
+		request.setCharacterEncoding("UTF-8");
+		
+		// 2) 요청 시 전달값을 꺼내서 변수에 기록 => request의 Parameter
+		// request.getParameter("키값")		 : String
+		// request.getParameterValues("키값") : String[] => checkbox일 경우 사용 
+		
+		// System.out.println(request.getParameter("userId"));
+		// System.out.println(request.getParameter("userPwd"));
+		
+		String userId = request.getParameter("userId");
+		String userPwd = request.getParameter("userPwd");
+		
+		// 값이 두 개 이상이다 => 데이터 가공
+		
+		// 3) 해당 요청을 처리해주는 서비스클래스의 메소드 호출
+		Member loginUser = new MemberService().login(userId, userPwd);
+		// 모든 조건을 만족하는 행이 존재한다면 반환된 loginUser에는 필드값이 회원정보로 꽉찬 Member타입의 주소값
+		// 하나의 조건이라도 만족하지 못했다면 null이 돌아올 것
+		
+		// System.out.println(loginUser);
+		
+		// 4) 처리된 결과를 가지고 사용자가 보게 될 응답 화면 지정
+		// 스텝 1. request객체에 응답화면에 보여질 값 담기 => request의 attribute
+		// 스텝 2. RequestDispatcher객체 생성 => 응답할 뷰 화면 지정
+		// 스텝 3. RequestDispatcher객체로부터 forward()
+		
+		/*
+		 * 로그인된 사용자의 정보
+		 * 응답페이지에 전달해야하기 때문에 값을 어딘가에 담아야함
+		 * => 어딘가에 Attribute에 담아서 보낼것
+		 * (담아줄 수 있는 객체가 4종류)
+		 * 
+		 * 크다
+		 * 
+		 * 1) application : 웹 어플리케이션 전역에서 언제나 꺼내쓸 수 있음
+		 * 
+		 * 2) session : 모든 JSP와 Servlet에서 꺼내 쓸 수 있음
+		 * 				단, 내가 직접적으로 session객체에 담은 값을 지우기 전까지만 꺼내 쓸 수 있음
+		 * 				세션이 끊기는 경우 : 브라우저가 종료될 때, 서버가 멈춘 경우
+		 * 	
+		 * 3) request : 해당 request를 포워딩한 응답 JSP에서만 쓸 수 있음
+		 * 				요청페이지부터 응답페이지까지에서만 쓸 수 있음
+		 * 
+		 * 4) page : 담은 값을 해당 JSP에서만 쓸 수 있음
+		 * 
+		 * 작다
+		 * 
+		 * = session, request가 가장 많이 쓰인다.
+		 * 
+		 * => 공통적으로 데이터를 담고자 할 때 : XXX.setAttribute("카", 밸류);
+		 * 	                  데이터를 뽑고자 할 때 : XXX.getAttribute("키");
+		 *           데이터를 지우고자 할 때 : XXX.removeAttribute("키");
+		 *           
+		 * 예시)
+		 * 로그인 시  : session.setAttribute("userInfo", loginUser);
+		 * 로그아웃 시 : session.removeAttribute("userInfo");
+		 * 
+		 */
+		
+		// 로그인 성공 / 실패 여부에 따라서 응답화면 지정
+		
+		if(loginUser == null) {
+			// 로그인 실패
+			// 에러메시지 넘기기
+			
+			// 스텝 1. Attribute영역에 담기기
+			request.setAttribute("errorMsg", "로그인에 실패했습니다.");
+			
+		} else {
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

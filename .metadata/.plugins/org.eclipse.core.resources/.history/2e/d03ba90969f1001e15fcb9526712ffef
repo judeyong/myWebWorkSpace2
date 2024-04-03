@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>나는 푸터야</title>
+</head>
+<body>
+	<%
+		// Date date = new Date();
+		// 오늘 날짜
+		// 오늘 날짜 기준으로 년도만 뽑아서 채워넣어야함
+		// => SimpleDateFormat
+		String year = new SimpleDateFormat("yyyy").format(new Date());
+	%>
+	
+	Copyright © 1998-2024 KH Information Educational Institute All Right Reserved
+	
+	<br>
+	
+</body>
+</html>

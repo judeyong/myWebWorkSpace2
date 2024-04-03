@@ -1,0 +1,85 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ page import="com.kh.model.vo.Person" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>EL 기본구문</h1>
+	<h3>1. 기존 방식대로 스크립틀릿과 표현식을 이용해서 각 영역에 담겨있는 값을 뽑아서 화면에 출력</h3>
+	<%--
+	<%
+	
+		//requestScope에 담긴 값 뽑기 => classRoom, student
+		String classRoom = (String)request.getAttribute("classRoom");
+		Person student = (Person)request.getAttribute("student");
+		
+		//sessionScope에 담긴 값 뽑기 => academy, lecture
+		String academy = (String)session.getAttribute("academy");
+		Person lecture = (Person)session.getAttribute("lecture");
+		
+	%>
+
+	<p>
+		학원명 : <%= academy %> <br> 
+		강의장 : <%= classRoom %><br>
+		강사정보 : <%= lecture.getName() %>, <%= lecture.getAge() %>, <%= lecture.getAddress() %> <br>
+		
+		수강생정보 <br>
+		<ul>
+			<li>이름: <%= student.getName() %></li>
+			<li>나이: <%= student.getAge() %></li>
+			<li>주소: <%= student.getAddress() %></li>
+		</ul> 
+	</p>
+	 --%>
+	<hr>
+	
+	<h3>2. EL을 이용해서 request/session Scope에 담긴 값들을 출력</h3>
+	
+	<p>
+		학원명 : $ <br> 
+		강의장 : <br>
+		강사정보 : , , <br>
+		
+		수강생정보 <br>
+		<ul>
+			<li>이름: </li>
+			<li>나이: </li>
+			<li>주소: </li>
+		</ul> 
+	</p>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>

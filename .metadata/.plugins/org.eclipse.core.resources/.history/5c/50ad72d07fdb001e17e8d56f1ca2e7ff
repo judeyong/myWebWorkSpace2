@@ -1,0 +1,24 @@
+package com.kh.jsp.member.model.service;
+
+import com.kh.jsp.common.JDBCTemplate;
+
+public class MemberService {
+	
+	public void login(String userId, String userPwd) {
+		
+		// Service => Connection 객체생성
+		
+		// 1) Connection객체 생성
+		Connection conn = JDBCTemplate.getConnection();
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+}

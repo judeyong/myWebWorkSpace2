@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!--  
+		* CRUD : 대부분의 컴퓨터가 소프트웨어가 가지는 기본적인 데이터 처리 기능을 묶어서 일컫는 말
+				사용자 인터페이스가 갖춰야 할 기능을 가리키는 용도로 사용됨
+				
+		- C : Create(생성)			=> INSERT
+		- R : READ(읽기/인출)			=> SELECT
+		- U : Update(갱신)			=> UPDATE
+		- D : DELETE(파괴/삭제) 		=> DELETE
+		
+		* 회원 서비스
+		로그인(R), 회원가입(C)-(아이디중복체크(R)), 마이페이지(R), 내정보변경(U), 회원탈퇴(D/U) 
+		
+		 -->
+
+</body>
+</html>

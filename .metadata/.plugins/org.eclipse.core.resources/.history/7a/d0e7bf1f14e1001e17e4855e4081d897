@@ -1,0 +1,24 @@
+package com.kh.jsp.board.model.dao;
+
+import java.io.FileInputStream;
+import java.util.Properties;
+
+public class BoardDao {
+	
+	private Properties prop = new Properties();
+	
+	public BoardDao() {
+	
+		String filePath = BoardDao.class.getResource("/sql/board/board-mapper.xml")
+									    .getPath();
+		prop.loadFromXML(new FileInputStream());
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+}
