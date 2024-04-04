@@ -56,15 +56,7 @@
 	
 	<a href="views/StandardAction/02_forward.jsp">02_jsp:forward</a>
 	
-	<br><br>
-	
-	<hr>
-	
-	<h3>2. 커스텀 액션 태그</h3>
-	
-	<a href="views/CustomAction/jstl.jsp" >JSTL</a>
-	
-	
+	<br>
 	
 	
 	
