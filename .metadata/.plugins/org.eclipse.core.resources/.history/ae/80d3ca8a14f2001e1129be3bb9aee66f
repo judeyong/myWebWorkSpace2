@@ -34,7 +34,7 @@ public class ELServlet extends HttpServlet {
 		
 		// 서블릿에서 응답데이터가 존재 한다면
 		// request, session
-		// application, --page에 담을 수 있었음 --> Servlet내장객체 / scope 객체
+		// application, --page 에 담을 수 있었음 --> Servlet내장객체 / scope 객체
 		
 		/*
 		 * 1. ServletContext (application scope)

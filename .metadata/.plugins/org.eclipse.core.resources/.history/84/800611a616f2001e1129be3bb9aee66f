@@ -95,9 +95,9 @@
 	
 	<p>
 		big이 small보다 크고 listOne이 비었습니까?
-		ex) if(big > small && listOne.isEmpty())<br>
+		ex) if(big > small && listOne.isEmpty())
 		
-		EL : ${ (big gt small) and (empty listOne) } <br>
+		EL : ${ (big eq small) and (empty listOne) }
 		
 		big과 small의 곱은 4의 배수입니까? <br>
 		
