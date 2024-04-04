@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<comment>
+		Notice Mapper
+	</comment>
+	
+	<entry key="selectNoticeList">
+		SELECT
+			 NOTICE_NO,
+			 NOTICE_TITLE,
+			 USER_NAME,
+			 COUNT,
+			 CREATE_DATE 
+		  FROM
+		      NOTICE
+		  JOIN
+		      MEMBER ON(NOTICE_WRITER = USER_NO)
+		 WHERE
+		      NOTICE.STATUS = 'Y'
+		 ORDER
+		  	BY
+		  	  CREATE_DATE DESC
+		     
+	</entry>
+	
+	<entry key="increaseCount">
+		UPDATE
+			  NOTICE
+		   SET
+		      COUNT = COUNT + 1
+		 WHERE
+		      NOTICE_NO = ?
+		   AND
+		      STATUS = 'Y'       
+		    	  
+	</entry>
+	
+	<entry key="selectNotice">
+		SELECT
+		      NOTICE_NO,
+		      NOTICE_TITLE,
+		      NOTICE_CONTENT,
+		      USER_NAME,
+		      CREATE_DATE,
+		      USER_NO
+		  FROM
+		      NOTICE
+		  JOIN
+		      MEMBER ON(NOTICE_WRITER = USER_NO)
+		 WHERE     
+		      NOTICE.STATUS = 'Y'
+		   AND
+		      NOTICE_NO = ?
+		 
+	</entry>
+	
+	<entry key="insert">
+		INSERT
+		  INTO
+		      NOTICE
+		      (
+		      	NOTICE_NO,
+		      	NOTICE_TITLE,
+		      	NOTICE_CONTENT,
+		      	NOTICE_WRITER
+		      )
+	    VALUES
+	    	  (
+	    	  SEQ_NNO.NEXTVAL,
+	    	  ?,
+	    	  ?,
+	    	  ?
+		 	  )
+	</entry>
+	
+	<entry key="update">
+		UPDATE
+			  NOTICE
+		   SET
+		      NOTICE_TITLE = ?,
+		      NOTICE_CONTENT = ?
+		 WHERE
+		      NOTICE_NO = ?
+		   AND
+		      STATUS = 'Y'
+	</entry>
+	
+	<entry key="delete">
+		UPDATE
+		      NOTICE
+		   SET
+		      STATUS = 'N'
+		 WHERE
+		      NOTICE_NO = ?   
+	</entry>  
+	
+</properties>
