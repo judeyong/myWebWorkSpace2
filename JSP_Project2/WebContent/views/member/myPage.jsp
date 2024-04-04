@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,22 +15,9 @@
 </head>
 <body>
 	
-	<%@ include file="../common/menubar.jsp" %>
 	
-	<% 
-		// System.out.println(loginUser);
-		String userId = loginUser.getUserId();
-		String userName = loginUser.getUserName();
-		
-		// 필수가 아닌 옵션들은 가공처리해줘야함
-		String phone = (loginUser.getPhone() == null)? "" : loginUser.getPhone();
-		String email = (loginUser.getEmail() == null)? "" : loginUser.getEmail();
-		String address = (loginUser.getAddress() == null)? "" : loginUser.getAddress();
-		String interest = (loginUser.getInterest() == null)? "" : loginUser.getInterest();
-		
-		// System.out.println(interest);
-	%>
-
+	<jsp:include page="../common/menubar.jsp" />
+	<c:set var="path" value="${ pageContext.request.contextPath }"/>
 	
 	<div class="outer">
 		<br>
@@ -37,31 +25,31 @@
 		
 		<br>
 		
-		<form id="mypage-form" method="post" action="<%= contextPath %>/update.me">
+		<form id="mypage-form" method="post" action="${ path }/update.me">
 			<table align="center">
 				<tr>
 					<td>* 아이디</td>
-					<td><input type="text" readonly maxlength="12" required name="userId" value="<%= userId %>"></td>
+					<td><input type="text" readonly maxlength="12" required name="userId" value="${ sessionScope.loginUser.userId }"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>* 이름</td>
-					<td><input type="text" maxlength="5" required name="userName" value="<%= userName %>"></td>
+					<td><input type="text" maxlength="5" required name="userName" value="${ sessionScope.loginUser.userName }"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>&nbsp;&nbsp;전화번호</td>
-					<td><input type="text" placeholder="-포함해서 입력해주세요." name="phone" value="<%= phone %>"></td>
+					<td><input type="text" placeholder="-포함해서 입력해주세요." name="phone" value="${ sessionScope.loginUser.phone }"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>&nbsp;&nbsp;이메일</td>
-					<td><input type="email" name="email" value="<%= email %>"></td>
+					<td><input type="email" name="email" value="${ sessionScope.loginUser.email }"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>&nbsp;&nbsp;주소</td>
-					<td><input type="text" name="address" value="<%= address %>"></td>
+					<td><input type="text" name="address" value="${ sessionScope.loginUser.address }"></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -79,30 +67,13 @@
 			</table>
 	
 			<script>
-				// 영화, 자바
-				const interest ='<%= interest %>';
-				// alert(interest);
+				const interest ='${ sessionScope.loginUser.interest}';
 				
 				$('input[type=checkbox]').each(function() {
-					
-					// 순차적으로 접근한 checkbox의 value 속성값이 interest에 포함되어있을 경우 체크
-					// checked속성 => attr(checked, true);
-					
-					// 자바스크립트였으면 indexOf => 찾는 문자열없으면 -1을 리턴
-					// jQuery == search()
-					// console.log($(this).val());
-					
-					// console.log(interest.search($(this).val()));
-					// 제이쿼리에서 현재 접근요소를 지징 $(this)
-					// 제이쿼리에서 value속성값을 반환해주는 메소드 val()
-					
 					if(interest.search($(this).val()) != -1){
 						$(this).attr('checked', true);
 					}
-					
 				});
-				
-				
 			</script>
 		
 			<br><br>
@@ -131,7 +102,7 @@
 	
 	      <!-- 현재 비밀번호, 변경할 비밀번호, 변경할 비밀번호 재입력 -->
 	      <div class="modal-body">
-	       <form action="<%= contextPath %>/updatePwd.me" method="post">
+	       <form action="${ path }/updatePwd.me" method="post">
 			  <div class="form-group">
 			    <label for="userPwd">현재 비밀번호 : </label>
 			    <input type="password" name="userPwd" class="form-control" placeholder="비밀번호를 입력해주세요." id="userPwd" required>
@@ -149,7 +120,7 @@
 			  
 			  <button type="submit" class="btn btn-primary" onclick="return validatePwd();">비밀번호 변경</button>
 			  
-			  <input type="hidden" value="<%= loginUser.getUserNo() %>" name="userNo">
+			  <input type="hidden" value="${ sessionScope.loginUser.userNo }" name="userNo">
 			</form>
 	      </div>
 		 <script>
@@ -182,7 +153,7 @@
 	
 	      <!-- 현재 비밀번호, 변경할 비밀번호, 변경할 비밀번호 재입력 -->
 	      <div class="modal-body">
-	       <form action="<%= contextPath %>/delete.me" method="post">
+	       <form action="${ path }/delete.me" method="post">
 			  <div class="form-group">
 			    <label for="userPwd" style="font-size:12px; color:red;">탈퇴를 원하신다면 비밀번호를 입력해주세요. </label>
 			    <input type="password" name="userPwd" class="form-control" placeholder="비밀번호를 입력해주세요." id="deletePwd" required>
@@ -190,7 +161,7 @@
 			  
 			  <button type="submit" class="btn btn-primary" onclick="return deleteMember();">회원탈퇴</button>
 			  
-			  <input type="hidden" value="<%= loginUser.getUserNo() %>" name="userNo">
+			  <input type="hidden" value="${ sessionScope.loginUser.userNo }" name="userNo">
 			</form>
 	      </div>
 		 <script>
