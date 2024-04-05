@@ -74,7 +74,7 @@
 	<hr>
 	
 	<pre>
-		* 속성 출력 (&lt;c:out value="출력하려고 하는 값" excapeXml="true(기본값, 생략가능)" /&gt;)
+		* 속성 출력 (&lt;c:out value="출력하려고 하는 값" escapeXml="true(기본값, 생략가능)" /&gt;)
 		- 데이터를 출력하고 할 때 사용하는 태그
 		- default : 기본값, value속성에 출력하고자 하는 값이 없을 경우 대체해서 기본값으로 출력할 내용물을 작성할 수 있음(생략가능)
 	</pre>
